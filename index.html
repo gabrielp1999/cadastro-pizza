@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria Betim-City</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Pizzaria Betim-City</h1>
+    <section id="container">
+        <div id="div-botoes">
+            <button onclick="cadastrarPizza()">Cadastrar Pizza</button>
+            <button onclick="pizzasCadastrada()">Pizzas Cadastradas</button>
+        </div>
+
+        <div id="painel-1">
+            <input id="nome-pizza-1" placeholder="Nome da pizza" type="text">
+            <input id="ingrediente-1" placeholder="ingrediente 1" type="text">
+            <input id="ingrediente-2" placeholder="ingrediente 2" type="text">
+            <input id="ingrediente-3" placeholder="ingrediente 3" type="text">
+            <input id="ingrediente-4" placeholder="ingrediente 4" type="text">
+            <button id="salvar" onclick="salvar()">Salvar</button>
+            <button id="salvar-novo" onclick="salvarNovo()">Salvar e Adicionar Novo</button>
+        </div>
+
+        <div id="painel-2">
+            <div>
+                <input id="nome-pizza-2" placeholder="Nome da Pizza" type="text">
+                <input  id="ingredienteP2" placeholder="Ingrediente" type="text">
+                <button onclick="filtrar()">Filtrar</button>
+                <button onclick="limparFiltro()">Limpar Filtro</button>
+            </div>
+            <div id="painel-3">
+                <table id="tabela">
+                    
+                </table>
+            </div>
+        </div>
+        
+        <script src="./script.js"></script>
+    </section>
+</body>
+</html>

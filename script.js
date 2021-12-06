@@ -60,7 +60,50 @@ function pizzasCadastrada() {
     painel2.style.display='block';
     let painel1 = document.getElementById('painel-1');
     painel1.style.display='none';  
+    criarTabela(listaDePedidos);
+    mostrarTabela()
+}
 
+function filtrar() {
+    const inputPizza = document.getElementById('nome-pizza-2').value;       
+    const inputIngrediente = document.getElementById('ingredienteP2').value;       
+
+    
+    const buscarPizza  = listaDePedidos.filter(function(obj){
+        const resultado = obj.nomeDaPizza.indexOf(inputPizza);
+      
+        const resposta = resultado < 0 ?  false : true;
+        return resposta;
+    });
+
+    const buscarIngrediente = buscarPizza.filter(function(obj){
+        const resultadoIngrediente1 = obj.ingrediente1.indexOf(inputIngrediente);
+        const resultadoIngrediente2 = obj.ingrediente2.indexOf(inputIngrediente);
+        const resultadoIngrediente3 = obj.ingrediente3.indexOf(inputIngrediente);
+        const resultadoIngrediente4 = obj.ingrediente4.indexOf(inputIngrediente);
+
+        if(resultadoIngrediente1 < 0 && resultadoIngrediente2 < 0 && resultadoIngrediente3 < 0 && resultadoIngrediente4 < 0){
+            return false;
+        }else{
+           return true;
+        }
+    });
+    const tabela = document.getElementById('tabela');
+    const nenhumResultado = document.getElementById('nenhumResultado');
+
+    if(buscarIngrediente.length > 0){
+        criarTabela(buscarIngrediente);
+        mostrarTabela()
+    }else{
+        tabela.style.display="none";
+
+        nenhumResultado.style.display="block";        
+    }
+
+   
+}
+
+function criarTabela(dados) {
     const tabela = document.getElementById('tabela');
 
     let conteudoTabela = `
@@ -71,11 +114,9 @@ function pizzasCadastrada() {
         <td>Ingrediente 3</td>
         <td>Ingrediente 4</td>
     </tr>`;
-
-    console.log(listaDePedidos)
     
     
-    for(let pedido of listaDePedidos) {
+    for(let pedido of dados) {
          conteudoTabela += `
         <tr>
         <td>${pedido.nomeDaPizza}</td>
@@ -85,27 +126,21 @@ function pizzasCadastrada() {
         <td>${pedido.ingrediente4}</td>
         </tr>`;
     }
-    
-    tabela.innerHTML = conteudoTabela;
+   
+   tabela.innerHTML = conteudoTabela;   
 }
 
-function filtrar() {
-    const inputPizza = document.getElementById('nome-pizza-2').value;       
-    const inputIngrediente = document.getElementById('ingredienteP2').value;       
 
-    const buscar  = listaDePedidos.filter(function(obj){
-        const resultado = obj.nomeDaPizza.indexOf(inputPizza) 
-        console.log({resultado});
+function limparFiltro() {
+    document.getElementById('nome-pizza-2').value = "";       
+    document.getElementById('ingredienteP2').value = "";
+    criarTabela(listaDePedidos);         
+    mostrarTabela();
+};
 
-        if(resultado < 0){
-            return false;
-        }else{
-            return true;
-        }
-    });
-
-       
-
-    console.log({buscar});
-
+function mostrarTabela() {
+    const tabela = document.getElementById('tabela');
+    tabela.style.display='block';    
+    const nenhumResultado = document.getElementById('nenhumResultado')
+    nenhumResultado.style.display="none";        
 }

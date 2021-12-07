@@ -67,10 +67,8 @@ margin-right: auto;
 }
 
 #painel-3 {
-    margin-right: auto;
-    margin-left: auto;
-    height: 150px;
-    width: 520px;
+    height: 250px;
+    width: 655px;
     padding: 10px;
     background-color: rgba(240, 240, 240, 0.1);
     margin-top: 15px;
@@ -89,8 +87,17 @@ td {
 table{
     border-collapse: collapse;
     font-size: 18px;
+    text-align: center;
+}
+img{
+    height: 55px;
+    width: 55px;
 }
 
 #nenhumResultado{
     display: none;
+}
+
+#urlImagem {
+    margin-top: 10px;
 }

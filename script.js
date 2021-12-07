@@ -1,4 +1,29 @@
-let listaDePedidos = []
+let listaDePedidos = [];
+// let listaDePedidos = [{
+//     nomeDaPizza: 'calabresa',
+//     ingrediente1: 'ovo',
+//     ingrediente2: 'bacon',
+//     ingrediente3: 'presunto',
+//     ingrediente4: 'tomate',
+//     urlImagem: 'sjhkjshjk'
+// },
+// {
+//     nomeDaPizza: 'amoda',
+//     ingrediente1: 'ovo',
+//     ingrediente2: 'bacon',
+//     ingrediente3: 'presunto',
+//     ingrediente4: 'tomate',
+//     urlImagem: 'sjhkjshjk'
+// },
+// {
+//     nomeDaPizza: 'portuguesa',
+//     ingrediente1: 'ovo',
+//     ingrediente2: 'bacon',
+//     ingrediente3: 'presunto',
+//     ingrediente4: 'tomate',
+//     urlImagem: 'sjhkjshjk'
+// }
+// ]
 
 function cadastrarPizza() {
     let painel1 = document.getElementById('painel-1');
@@ -14,6 +39,8 @@ function salvar(mostrarPainel) {
     let ingrediente2 = document.getElementById('ingrediente-2');
     let ingrediente3 = document.getElementById('ingrediente-3');
     let ingrediente4 = document.getElementById('ingrediente-4');
+    let urlImagem = document.getElementById('urlImagem');
+    let valorIndice = document.getElementById('indice');
 
     const pizza = {
         nomeDaPizza: nomePizza1.value,
@@ -21,23 +48,37 @@ function salvar(mostrarPainel) {
         ingrediente2: ingrediente2.value,
         ingrediente3: ingrediente3.value,
         ingrediente4: ingrediente4.value,
+        urlImagem: urlImagem.value
     };
 
 
-    if(nomePizza1.value.length < 2 || ingrediente1.value.length < 2 || ingrediente2.value.length < 2 || ingrediente3.value.length < 2 || ingrediente4.value.length < 2){
+    if(nomePizza1.value.length < 2 || ingrediente1.value.length < 2 || ingrediente2.value.length < 2 || ingrediente3.value.length < 2 || ingrediente4.value.length < 2 || urlImagem.value.length < 2){
         return alert('precisa preencher todos campos!');
     }else{
         alert('Pizza cadastrada com sucesso!');
     };
     
-    listaDePedidos.push(pizza);
+    if(valorIndice.value !== ''){
+        listaDePedidos = listaDePedidos.map(function(elemento, indice){
+            if(parseInt(valorIndice.value) === indice){
+                return pizza;
+            }else{
+                return elemento;
+            }
+        })
+    }else{
+        listaDePedidos.push(pizza);
+    }
+
 
     nomePizza1.value = '';
     ingrediente1.value = '';
     ingrediente2.value = '';
     ingrediente3.value = '';
     ingrediente4.value = '';
-    
+    urlImagem.value = "";    
+    valorIndice.value = "";
+
     let painel1 = document.getElementById('painel-1');
 
     if(mostrarPainel === true){
@@ -113,10 +154,14 @@ function criarTabela(dados) {
         <td>Ingrediente 2</td>
         <td>Ingrediente 3</td>
         <td>Ingrediente 4</td>
+        <td>Imagem</td>
+        <td>Editar</td>
+        <td>excluir</td>
     </tr>`;
     
     
-    for(let pedido of dados) {
+    for(let indice in dados) {
+        const pedido = dados[indice];
          conteudoTabela += `
         <tr>
         <td>${pedido.nomeDaPizza}</td>
@@ -124,9 +169,12 @@ function criarTabela(dados) {
         <td>${pedido.ingrediente2}</td>
         <td>${pedido.ingrediente3}</td>
         <td>${pedido.ingrediente4}</td>
+        <td><img src="${pedido.urlImagem}" alt=""></td>
+        <td><button onclick="editarPizza(${indice})">Editar</button></td>
+        <td><button onclick="excluirPizza(${indice})">Excluir</button></td>
         </tr>`;
     }
-   
+       
    tabela.innerHTML = conteudoTabela;   
 }
 
@@ -143,4 +191,39 @@ function mostrarTabela() {
     tabela.style.display='block';    
     const nenhumResultado = document.getElementById('nenhumResultado')
     nenhumResultado.style.display="none";        
+}
+
+function excluirPizza(indice) {
+    const confirmar = window.confirm('Deseja mesmo excluir a pizza cadastrada?')
+
+    if(confirmar === true){
+        listaDePedidos.splice(indice, 1);
+       alert('Pizza exluida');
+       criarTabela(listaDePedidos);
+    }
+
+}
+
+function editarPizza(indiceBuscado) {
+    const pizzaEncontrada = listaDePedidos.find(function(elemento, indice){
+        if(indiceBuscado === indice){
+            return true;
+        }else{
+            return false;
+        }
+    });
+
+    document.getElementById('nome-pizza-1').value = pizzaEncontrada.nomeDaPizza;
+    document.getElementById('ingrediente-1').value = pizzaEncontrada.ingrediente1;
+    document.getElementById('ingrediente-2').value = pizzaEncontrada.ingrediente2;
+    document.getElementById('ingrediente-3').value = pizzaEncontrada.ingrediente3;
+    document.getElementById('ingrediente-4').value = pizzaEncontrada.ingrediente4;
+    document.getElementById('urlImagem').value = pizzaEncontrada.urlImagem;
+    document.getElementById('indice').value = indiceBuscado;
+
+    const painel2 = document.getElementById('painel-2');
+    painel2.style.display='none';    
+    const painel1 = document.getElementById('painel-1')
+    painel1.style.display="block";        
+
 }

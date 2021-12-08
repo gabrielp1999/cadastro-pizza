@@ -1,11 +1,11 @@
 body {
     padding: 0;
     margin: 0;
-    background-color: cadetblue;
+    background-color: #E6E6FA;
 }
 
 h1{
-    margin: 0 500px;
+    text-align: center;
 }
 
 #container {
@@ -38,7 +38,7 @@ margin-right: auto;
     display: none;
     margin-left: auto;
     margin-right: auto;
-    background-color: brown;
+    background-color:#D3D3D3;
 
 }
 
@@ -63,7 +63,7 @@ margin-right: auto;
     padding: 10px;
 
     border: 1px solid black;
-    background-color: darkslategray;
+    background-color: #D3D3D3;
 }
 
 #painel-3 {
@@ -81,7 +81,7 @@ td {
 
 #itens {
     font-weight: bold;
-    color: #ddd;
+    color: #000;
     font-size: 15px;
 }
 table{
@@ -100,4 +100,8 @@ img{
 
 #urlImagem {
     margin-top: 10px;
+}
+
+.botoes{
+    display: flex;
 }

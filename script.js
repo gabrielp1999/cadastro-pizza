@@ -31,6 +31,9 @@ function cadastrarPizza() {
 
     let painel2 = document.getElementById('painel-2');
     painel2.style.display='none';
+
+    const salvarNovo = document.getElementById('salvar-novo');
+    salvarNovo.style.display='block';  
 }
 
 function salvar(mostrarPainel) {
@@ -223,6 +226,8 @@ function editarPizza(indiceBuscado) {
 
     const painel2 = document.getElementById('painel-2');
     painel2.style.display='none';    
+    const salvarNovo = document.getElementById('salvar-novo');
+    salvarNovo.style.display='none';    
     const painel1 = document.getElementById('painel-1')
     painel1.style.display="block";        
 

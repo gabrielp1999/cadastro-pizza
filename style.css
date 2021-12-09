@@ -124,13 +124,12 @@ input{
 }
 
 
-@media (max-width:430px){
+@media screen and (max-width:430px){
     
     #titulo{
         display: flex;
         justify-content: center;
     }
-    
     
     #container {
     padding: 15px;

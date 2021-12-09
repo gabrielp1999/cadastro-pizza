@@ -4,34 +4,37 @@ body {
     background-color: #E6E6FA;
 }
 
-h1{
-    text-align: center;
+#titulo{
+    display: flex;
+    justify-content: center;
 }
+
 
 #container {
 padding: 15px;
 margin-top: 30px;
 height: 400px;    
-width: 700px;
+width: 57vw;
 border: 1px solid black;
 margin-left: auto;
 margin-right: auto;
 }
 
 #div-botoes {
-    width: 540px;
+    width: 20vw;
     display: flex;
+    margin-left: 6vw;
 }
 
 #div-botoes button {
-    margin: 0 130px;
+    margin-left: 10vw;
     border-radius: 5px;
 
 }
 
 #painel-1{
     padding: 20px;
-    width: 400px;
+    width: 28vw;
     height: 120px;
     margin-top: 20px;
     border: 1px solid black;
@@ -59,7 +62,7 @@ margin-right: auto;
     display: none;
     margin-top: 20px;
     height: 300px;
-    width: 670px;
+    width: 55vw;
     padding: 10px;
 
     border: 1px solid black;
@@ -68,10 +71,11 @@ margin-right: auto;
 
 #painel-3 {
     height: 250px;
-    width: 655px;
+    width: 53vw;
     padding: 10px;
     background-color: rgba(240, 240, 240, 0.1);
     margin-top: 15px;
+    overflow-x: scroll;
 }
 
 td {
@@ -104,8 +108,98 @@ img{
 
 .botoes{
     display: flex;
+
 }
+#salvar, #salvar-novo {
+    margin-top: 10px;
+    margin: 10px 5px;
+}
+
 
 input{
     background-color: white;
+    width: 10vw;
 }
+
+
+@media (max-width:420px){
+    
+    #titulo{
+        display: flex;
+        justify-content: center;
+    }
+    
+    
+    #container {
+    padding: 15px;
+    margin-top: 30px;
+    height: 400px;  
+    width: 90vw;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    }
+    
+    #div-botoes {
+        width: 15vw;
+        display: flex;
+        margin-left: 11vw;
+    }
+    
+    #div-botoes button {
+        margin-left: 10vw;
+        border-radius: 5px;
+    
+    }
+    
+    #painel-1{
+        padding: 20px;
+        width: 65vw;
+        height: 120px;
+        margin-top: 20px;
+        border: 1px solid black;
+        display: none;
+        margin-left: auto;
+        margin-right: auto;
+        background-color:#D3D3D3;
+    
+    }
+    
+    input{
+        background-color: white;
+        width: 30vw;
+        height: 15px;
+    }
+    
+    #painel-3 {
+        height: 250px;
+        width: 82vw;
+        padding: 5px;
+        background-color: rgba(240, 240, 240, 0.1);
+        margin-top: 15px;
+        overflow-x: scroll;
+        overflow-y: scroll;
+        border: 1px solid black;
+    }
+
+    #painel-2{
+        display: none;
+        margin-top: 20px;
+        height: 300px;
+        width: 85vw;
+        padding: 10px;
+        border: 1px solid black;
+        background-color: #D3D3D3;
+    }
+    
+    .botoes button {
+        height: 30px;
+        width: 150px;
+    }
+    .botoes{
+        margin-left: -8px ;
+    }
+}
+
+
+

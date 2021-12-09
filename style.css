@@ -141,7 +141,7 @@ input{
     }
     
     #div-botoes {
-        width: 15vw;
+        width: 60vw;
         display: flex;
         margin-left: 11vw;
     }
@@ -154,7 +154,7 @@ input{
     
     #painel-1{
         padding: 20px;
-        width: 65vw;
+        width: 80vw;
         height: 120px;
         margin-top: 20px;
         border: 1px solid black;
@@ -167,7 +167,7 @@ input{
     
     input{
         background-color: white;
-        width: 70px;
+        width: 125px;
         height: 15px;
     }
     
